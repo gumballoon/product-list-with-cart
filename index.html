@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+    <!-- GoogleFonts Link: https://fonts.google.com -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- website styling -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Browser Extension Manager</title>
+    <meta name="description" content="Frontend Mentor: Challenge #26">
+
+</head>
+
+<body>
+    <div class="container-fluid" id="herobox">
+    <!-- dessert catalogue -->
+    <div class="col-xl-8">e
+        <h1 class="display-3 fw-bold text-start my-4">Desserts</h1>
+
+        <template>
+            <section class="dessert">
+                <div class="position-relative">
+                    <img src="" alt="" class="img-mobile img-fluid rounded-3 dessert-image d-md-none">
+
+                    <img src="" alt="" class="img-tablet img-fluid rounded-3 dessert-image d-none d-md-block d-xl-none">
+
+                    <img src="" alt="" class="img-desktop img-fluid rounded-3 dessert-image d-none d-xl-block">
+
+
+                    <button class="fs-6 fw-semibold default-button" title="add the dessert to the cart" aria-label="add the dessert to the cart">
+                        <svg class="img-fluid" xmlns="http://www.w3.org/2000/svg" width="21" height="20" fill="none" viewBox="0 0 21 20"><g fill="#C73B0F" clip-path="url(#a)"><path d="M6.583 18.75a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5ZM15.334 18.75a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5ZM3.446 1.752a.625.625 0 0 0-.613-.502h-2.5V2.5h1.988l2.4 11.998a.625.625 0 0 0 .612.502h11.25v-1.25H5.847l-.5-2.5h11.238a.625.625 0 0 0 .61-.49l1.417-6.385h-1.28L16.083 10H5.096l-1.65-8.248Z"/><path d="M11.584 3.75v-2.5h-1.25v2.5h-2.5V5h2.5v2.5h1.25V5h2.5V3.75h-2.5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M.333 0h20v20h-20z"/></clipPath></defs></svg>
+
+                        Add to Cart
+
+                        <p class="fs-6 fw-semibold rose-400 zero-stock d-none">0 left in stock</p>
+                    </button>
+
+                    <button class="fs-6 selected-button d-none" title="remove/add one item" aria-label="remove/add one item">
+                        <svg class="img-fluid quantity minus" xmlns="http://www.w3.org/2000/svg" width="10" height="2" fill="none" viewBox="0 0 10 2"><path fill="#fff" d="M0 .375h10v1.25H0V.375Z"/></svg>
+
+                        <span title="quantity in the cart" aria-label="quantity in the cart">1</span>
+
+                        <svg class="img-fluid quantity plus" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10"><path fill="#fff" d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"/></svg>
+
+                        <p class="fs-6 fw-semibold rose-400 zero-stock d-none">0 left in stock</p>
+                    </button>
+                </div>
+
+                <h3 class="fs-6 mt-5 mb-1 rose-400 text-uppercase category"></h3>
+
+                <h2 class="fs-5 fw-semibold mb-1 name"></h2>
+
+                <h2 class="fs-5 fw-semibold mb-4 orange">$
+                     <span class="price"></span>
+                </h2>
+
+                <!-- hidden info for JS-->
+                 <input type="hidden" class="d-none quantity">
+                <input type="hidden" class="d-none img-thumbnail">
+            </section>
+        </template>
+
+        <div id="all-desserts">
+        </div>
+    </div>
+
+    <!-- cart -->
+    <div class="col-xl-4">
+        <section id="cart" class="rounded-3 mt-xl-4">
+            <h2 class="fs-3 fw-bold orange text-start">Your Cart (<span id="total-items">0</span>)</h2>
+    
+            <div id="cart-empty">
+                <img src="./images/illustration-empty-cart.svg" alt="illustration-empty-cart" class="img-fluid my-3">
+                <p class="fs-6 fw-semibold rose-500"> Your added items will appear here</p>
+            </div>
+
+            <div id="cart-full" class="d-none">
+                <div id="cart-items">
+                    <!-- to contain the desserts added to the cart -->
+                </div>
+
+                <p class="fs-6 text-start mt-2">Order Total <span id="total-price" class="fs-5 fw-bold">$100</span></p>
+
+                <div class="fs-6 rounded-2">
+                    <img src="./images/icon-carbon-neutral.svg" alt="icon-carbon-neutral" class="img-fluid me-2">
+
+                    <p class="m-0">This is a <span class="fw-semibold">carbon-neutral</span> delivery</p>
+                </div>
+
+                <button class="cart-button" title="confirm the order and reload the page" aria-label="confirm the order and reload the page">Confirm Order</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+    <div id="blurry" class="d-none">
+        <!-- confirmation  -->
+        <div id="confirmation" class="rounded-2">
+            <div class="text-start">
+                <img src="./images/icon-order-confirmed.svg" alt="icon-order-confirmed" class="mb-2">
+                <h2 class="fs-1 fw-bold my-2">Order Confirmed</h2>
+                <p class="rose-400">We hope you enjoy your food!</p>
+            </div>
+
+            <div id="confirmation-items" class="rounded-3 my-2">
+            </div>
+
+            <button type="submit" class="cart-button">Start New Order</button>
+    </div>
+</div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- desserts data -->
+    <script src="desserts.js"></script>
+    <!-- website scripting -->
+    <script src="script.js"></script>
+</body>
+
+</html>
